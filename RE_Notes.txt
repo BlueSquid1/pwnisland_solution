@@ -1,0 +1,85 @@
+resources
+---------
+large database of prime factors for crypto:
+http://factordb.com/index.php
+
+RSA is not slower than AES. RSA can only encrypt a number while AES working with cyphon blocks.
+
+
+gdb
+---
+
+attach to a proccess
+sudo gdb -p $( pidof /home/squid/Desktop/PwnAdventure3_Launcher_Linux/PwnAdventure3_Data/PwnAdventure3/PwnAdventure3/Binaries/Linux/PwnAdventure3-Linux-Shipping)
+
+set debug point:
+break GameServerConnection::Jump(bool)
+
+or
+b *0x00007f044caaeb98
+
+
+see call stack:
+bt or backtrace
+
+menu of the info submenu:
+info
+
+list all variables:
+info variables
+
+print class:
+ptype Player
+
+print variable:
+p GameWorld
+
+derefence a pointer
+p *GameWorld
+
+cast a variable
+p (World *)Gameworld
+
+
+via the assemble of a function:
+disassemble 'KeyVerifier::VerifyKey(std::string const&)'
+
+print memory (64 bit)
+x/1gx $rbp-0x30
+
+print memory (8 bit)
+x/1bx $rbp-0x30
+
+
+addresses on the stack go in this dirrection:
+00000000000000000000000
+      ^             ^
+   rbp-0x80      rbp-0x75
+
+
+0123456789ABCDEFHJKLMNPQM
+
+0x3c9921ac0185b3aaae37e1b
+
+
+a binary file:
+.bss section data section - where global variables go
+
+
+LD_PRELOAD=/home/squid/Desktop/MyGit/PwnAdventure3_Solutions/gameLib/test.so ./PwnAdventure3-Linux-Shipping
+
+
+rsa
+---
+public key = 0x03c9921ac0185b3aaae37e1b
+d = 0x611c0519e05065e8f38da1
+
+plaintext input to rsa:
+0x02307b9ac5a928398a418820
+
+encrypted output:
+0x00aad4a58f6f4a88f9e18788
+
+expo = 0x10001
+
+
